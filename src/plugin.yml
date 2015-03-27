@@ -1,0 +1,9 @@
+name: Bronze
+main: me.raydond123.bronze.Bronze
+version: 1.0
+commands:
+   bronzedp:
+      description: Start a drop party!
+permissions:
+   bronzedp.use:
+      description: Permission for /bronzeDp.
