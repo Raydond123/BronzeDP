@@ -1,2 +1,5 @@
 items:
  - '264:5'
+commands:
+ - 'kit kitNameHere %player%'
+ - 'eco give %player% 5000'

@@ -20,22 +20,14 @@ public class Bronze extends JavaPlugin {
 
         logger.info("[Bronze] The plugin has been enabled!");
 
-        if(getConfig().getStringList("items") == null) {
-
-            saveDefaultConfig();
-
-        } else {
-
-            saveConfig();
-
-        }
+        saveDefaultConfig();
+        saveConfig();
 
     }
 
     public void onDisable() {
 
         logger.info("[Bronze] The plugin has been disabled!");
-        saveConfig();
 
     }
 
@@ -60,6 +52,7 @@ public class Bronze extends JavaPlugin {
                     player.sendMessage(prefix + ChatColor.GREEN + "You just sent out a drop party!");
 
                     List<String> items = getConfig().getStringList("items");
+                    List<String> commands = getConfig().getStringList("commands");
 
                     for(Player player1 : Bukkit.getOnlinePlayers()) {
 
@@ -76,6 +69,14 @@ public class Bronze extends JavaPlugin {
                                 ItemStack item = new ItemStack(Material.getMaterial(materialId), amount);
 
                                 player1.getInventory().addItem(item);
+
+                            }
+
+                            for(int i = 0; i < commands.size(); i++) {
+
+                                String command = commands.get(i);
+
+                                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command.replace("%player%", player1.getName()));
 
                             }
 
